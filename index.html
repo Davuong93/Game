@@ -1,0 +1,93 @@
+<html>
+<!--
+Things to build:
+1. User can input their name, if no name is set call the user Bob
+    Enter your name [ BUTTON ]
+    Create input for the name 
+    
+2. 3 options for user to select
+    Create 3 buttons for rock, paper or scissors
+    
+3. Have AI, randomly select an option (Math.random(), returns 0 <= n < 1)
+    Math.random(), returns 0 <= n < 1
+    make a function that will make this AI choose between rock paper or scissors
+    
+4. Display text of what the user selected, and what bot selected, and who the winner is
+    print the outcome after the game is over
+    
+    USER picked X and BOT picked Y
+        Someone WINS!
+
+
+scissors = https://static.thenounproject.com/png/88666-200.png
+papers = https://static.thenounproject.com/png/477912-200.png
+rock = https://static.thenounproject.com/png/477914-200.png
+-->
+    <body>
+        <h1>Rock Paper Scissors!</h1>
+        <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
+        <button onclick="">Name Selection</button>
+        <div>
+            <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png" width="200" height="200" alt="An image of a Scissor"/> </button>
+            <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png" width="200" height="200" alt="An image of a Paper"/> </button>
+            <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200" alt="An Image of a Rock"/> </button>
+        </div>
+        <h1 id="game"></h1>
+        <script>
+            const match = document.getElementById("game");
+            const nameField = document.getElementById("nameField");
+            
+            function userChoice(choice) {
+                let bot = botChoice()
+                let result = outcome(choice, bot)
+
+                match.innerHTML = ""
+                let playText = document.createElement("h3")
+                playText.innerText = `${nameField.value} picked ${choice} and Bot picked ${bot}`
+                match.appendChild(playText)
+                let finalOutcome = document.createElement("h2")
+                finalOutcome.innerText = `${result}`
+                match.appendChild(finalOutcome)
+            }   
+            
+            function botChoice() {
+                let dice = Math.random();
+                if (dice <= 0.33) {
+                    return "Rock";
+                } else if (dice <= 0.66) {
+                    return "Paper"
+                } else {
+                    return "Scissor"
+                }
+             }
+             
+             function outcome(user, bot) {
+                if (user == "Scissor") {
+                    if (bot == "Scissor") {
+                        return "Tie"
+                    } else if (bot == "Paper") {
+                        return "Win"
+                    } else {
+                        return "Lose"
+                    }
+                } else if (user == "Paper") { 
+                    if (bot == "Scissor") {
+                        return "Lose"
+                    } else if (bot == "Paper") {
+                        return "Tie"
+                    } else {
+                        return "Win"
+                    }
+                } else {
+                    if (bot == "Scissor") {
+                        return "Win"
+                    } else if (bot == "Paper") {
+                        return "Lose"
+                    } else {
+                        return "Tie"
+                    }
+                }
+             }
+        </script>
+    </body>
+</html>
