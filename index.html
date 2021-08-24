@@ -78,17 +78,20 @@ rock = https://static.thenounproject.com/png/477914-200.png
         </div>
     </nav>
     <h1 class="title">Rock Paper Scissors!</h1>
-    <div id="game" class="center">
+    <div id="sGame" class="center">
+        <div>
         <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
         <button onmouseover="mOver(this)" onclick="">Enter Your Name!</button>
+        </div>
         <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
                 width="200" height="200" alt="An image of a Scissor" /> </button>
         <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png"
                 width="200" height="200" alt="An image of a Paper" /> </button>
         <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
                 width="200" height="200" alt="An Image of a Rock" /> </button>
+        <h1 id="game"></h1>
     </div>
-    <h1 id="game"></h1>
+    
     <script>
         const rpsGame = document.getElementById("game");
         function startGame {
