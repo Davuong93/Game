@@ -31,87 +31,113 @@ Host game on github and share the link!
 scissors = https://static.thenounproject.com/png/88666-200.png
 papers = https://static.thenounproject.com/png/477912-200.png
 rock = https://static.thenounproject.com/png/477914-200.png
---><head>
+-->
+
+<head>
     <style>
-    .center {
-        margin: auto;
-        margin-top: 50px;
-        width: 60%;
-        height: 1000px border: 5px solid white;
-        padding: 10px;
-        --bs-bg-opacity: 0.10;
-        border: 5px;
-        border-style: solid;
-        border-width: medium;
-        border-radius: 12px;
-    }
+        .center {
+            margin: auto;
+            margin-top: 50px;
+            width: 60%;
+            height: 1000px border: 5px solid white;
+            padding: 10px;
+            --bs-bg-opacity: 0.10;
+            border: 5px;
+            border-style: solid;
+            border-width: medium;
+            border-radius: 12px;
+        }
     </style>
 </head>
-    <body>
-        <h1>Rock Paper Scissors!</h1>
-        <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
-        <button onclick="">Name Selection</button>
-        <div class="center">
-            <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png" width="200" height="200" alt="An image of a Scissor"/> </button>
-            <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png" width="200" height="200" alt="An image of a Paper"/> </button>
-            <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200" alt="An Image of a Rock"/> </button>
-        </div>
-        <h1 id="game"></h1>
-        <script>
-            const match = document.getElementById("game");
-            const nameField = document.getElementById("nameField");
-            
-            function userChoice(choice) {
-                let bot = botChoice()
-                let result = outcome(choice, bot)
 
-                match.innerHTML = ""
-                let playText = document.createElement("h3")
-                playText.innerText = `${nameField.value} picked ${choice} and Bot picked ${bot}`
-                match.appendChild(playText)
-                let finalOutcome = document.createElement("h2")
-                finalOutcome.innerText = `${result}`
-                match.appendChild(finalOutcome)
-            }   
-            
-            function botChoice() {
-                let dice = Math.random();
-                if (dice <= 0.33) {
-                    return "Rock";
-                } else if (dice <= 0.66) {
-                    return "Paper"
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">David Vuong</a>
+            <div class="d-flex">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">About Me</a>
+                    </li>
+                    <!-- will add more buttons here with more experience-->
+                    <!--<li class="nav-item"> 
+                            <a class="nav-link" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1>Rock Paper Scissors!</h1>
+    <div class="center">
+        <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
+        button onclick="">Name Selection</button>
+        <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
+                width="200" height="200" alt="An image of a Scissor" /> </button>
+        <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png"
+                width="200" height="200" alt="An image of a Paper" /> </button>
+        <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
+                width="200" height="200" alt="An Image of a Rock" /> </button>
+    </div>
+    <h1 id="game"></h1>
+    <script>
+        const match = document.getElementById("game");
+        const nameField = document.getElementById("nameField");
+
+        function userChoice(choice) {
+            let bot = botChoice()
+            let result = outcome(choice, bot)
+
+            match.innerHTML = ""
+            let playText = document.createElement("h3")
+            playText.innerText = `${nameField.value} picked ${choice} and Bot picked ${bot}`
+            match.appendChild(playText)
+            let finalOutcome = document.createElement("h2")
+            finalOutcome.innerText = `${result}`
+            match.appendChild(finalOutcome)
+        }
+
+        function botChoice() {
+            let dice = Math.random();
+            if (dice <= 0.33) {
+                return "Rock";
+            } else if (dice <= 0.66) {
+                return "Paper"
+            } else {
+                return "Scissor"
+            }
+        }
+
+        function outcome(user, bot) {
+            if (user == "Scissor") {
+                if (bot == "Scissor") {
+                    return "Tie"
+                } else if (bot == "Paper") {
+                    return "Win"
                 } else {
-                    return "Scissor"
+                    return "Lose"
                 }
-             }
-             
-             function outcome(user, bot) {
-                if (user == "Scissor") {
-                    if (bot == "Scissor") {
-                        return "Tie"
-                    } else if (bot == "Paper") {
-                        return "Win"
-                    } else {
-                        return "Lose"
-                    }
-                } else if (user == "Paper") { 
-                    if (bot == "Scissor") {
-                        return "Lose"
-                    } else if (bot == "Paper") {
-                        return "Tie"
-                    } else {
-                        return "Win"
-                    }
+            } else if (user == "Paper") {
+                if (bot == "Scissor") {
+                    return "Lose"
+                } else if (bot == "Paper") {
+                    return "Tie"
                 } else {
-                    if (bot == "Scissor") {
-                        return "Win"
-                    } else if (bot == "Paper") {
-                        return "Lose"
-                    } else {
-                        return "Tie"
-                    }
+                    return "Win"
                 }
-             }
-        </script>
-    </body>
+            } else {
+                if (bot == "Scissor") {
+                    return "Win"
+                } else if (bot == "Paper") {
+                    return "Lose"
+                } else {
+                    return "Tie"
+                }
+            }
+        }
+    </script>
+</body>
+
 </html>
