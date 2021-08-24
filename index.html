@@ -17,17 +17,37 @@ Things to build:
     
     USER picked X and BOT picked Y
         Someone WINS!
+Improve the UI, and make it feel more like a video game
+Have a welcome screen that prompt user for their name, with a START button
+Show the 3 options once the user tapped START
+Make the game best out of 3, and tally the total winnings somewhere on the screen
+Ask the user if they want to play again, once the match is over.
+Host game on github and share the link!
 
 
 scissors = https://static.thenounproject.com/png/88666-200.png
 papers = https://static.thenounproject.com/png/477912-200.png
 rock = https://static.thenounproject.com/png/477914-200.png
--->
+--><head>
+    <style>
+    .center {
+        margin: auto;
+        margin-top: 50px;
+        width: 60%;
+        height: 1000px border: 5px solid white;
+        padding: 10px;
+        --bs-bg-opacity: 0.10;
+        border-style: solid;
+        border-width: medium
+        border-radius: 12px;
+    }
+    </style>
+</head>
     <body>
         <h1>Rock Paper Scissors!</h1>
         <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
         <button onclick="">Name Selection</button>
-        <div>
+        <div class="center">
             <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png" width="200" height="200" alt="An image of a Scissor"/> </button>
             <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png" width="200" height="200" alt="An image of a Paper"/> </button>
             <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200" alt="An Image of a Rock"/> </button>
