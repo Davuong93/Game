@@ -106,11 +106,12 @@ rock = https://static.thenounproject.com/png/477914-200.png
         const cards = document.getElementById("sGame");
         const start = document.getElementByID("start");
         cards.style.visibility = 'hidden';
+        
         function showGame() {
-            if (cards.style.visibility === 'visible') {
-                cards.style.visibility = 'hidden';
-            } else {
+            if (cards.style.visibility === 'hidden') {
                 cards.style.visibility = 'visible';
+            } else {
+                cards.style.visibility = 'hidden';
             }
             start.style.display = 'none';
         }
