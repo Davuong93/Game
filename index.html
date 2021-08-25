@@ -96,10 +96,10 @@ rock = https://static.thenounproject.com/png/477914-200.png
     <script>
         function showGame() {
             const cards = document.getElementById("sGame");
-            if (cards.style.display === "block") {
-                cards.style.display = "none";
-            } else {
+            if (cards.style.display === "none") {
                 cards.style.display = "block";
+            } else {
+                cards.style.display = "none";
             }
         }
     </script>
