@@ -51,7 +51,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             border-width: medium;
             border-radius: 12px;
         }
-        .title {
+        .middle {
             text-align: center;
         }
     </style>
@@ -96,10 +96,10 @@ rock = https://static.thenounproject.com/png/477914-200.png
     <script>
         function showGame() {
             const cards = document.getElementById("sGame");
-            if (cards.style.display === "none") {
-                cards.style.display = "block";
-            } else {
+            if (cards.style.display === "block") {
                 cards.style.display = "none";
+            } else {
+                cards.style.display = "block";
             }
         }
     </script>
