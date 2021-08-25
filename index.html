@@ -51,7 +51,10 @@ rock = https://static.thenounproject.com/png/477914-200.png
             border-width: medium;
             border-radius: 12px;
         }
-
+        .center2 {
+            margin: auto;
+            width: 60%;
+        }
         .middle {
             text-align: center;
         }
@@ -80,11 +83,11 @@ rock = https://static.thenounproject.com/png/477914-200.png
     </nav>
     <h1 class="title">Rock Paper Scissors!</h1>
     <div class="center">
-        <div class="center">
+        <div class="middle">
             <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
             <button onclick="showGame()">Enter Your Name!</button>
         </div>
-        <div id="sGame" class="center">
+        <div id="sGame" class="center2">
             <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
                     width="200" height="200" alt="An image of a Scissor" /> </button>
             <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png"
