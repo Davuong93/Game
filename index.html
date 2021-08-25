@@ -43,7 +43,8 @@ rock = https://static.thenounproject.com/png/477914-200.png
             margin: auto;
             margin-top: 50px;
             width: 60%;
-            height: 1000px border: 5px solid white;
+            height: 1000px;
+            border: 5px solid white;
             padding: 10px;
             --bs-bg-opacity: 0.10;
             border: 5px;
@@ -55,11 +56,15 @@ rock = https://static.thenounproject.com/png/477914-200.png
         .center2 {
             margin: auto;
             width: 60%;
-            visibility: hidden;
+            display: none;
         }
 
         .middle {
             text-align: center;
+        }
+
+        .restartHide {
+            display: none;
         }
     </style>
 </head>
@@ -88,41 +93,84 @@ rock = https://static.thenounproject.com/png/477914-200.png
     <div class="center">
         <div class="middle">
             <h2>Welcome to my little mini-game, please enter your name!</h2>
-            <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
+            <input id="nameField" type="text" value="Bob" placeholder="Please enter your name" />
             <div id=start>
                 <button onclick="showGame()">START!</button>
             </div>
         </div>
         <div id="sGame" class="center2">
-            <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
-                    width="200" height="200" alt="An image of a Scissor" /> </button>
-            <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png"
-                    width="200" height="200" alt="An image of a Paper" /> </button>
-            <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
-                    width="200" height="200" alt="An Image of a Rock" /> </button>
+            <div>
+                <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
+                        width="200" height="200" alt="An image of a Scissor" /> </button>
+                <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png"
+                        width="200" height="200" alt="An image of a Paper" /> </button>
+                <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
+                        width="200" height="200" alt="An Image of a Rock" /> </button>
+            </div>
         </div>
         <h1 id="game" class="middle"></h1>
+        <button id="restart" class="restartHide" onclick="restart()">Restart</button>
+
     </div>
     <script>
         const cards = document.getElementById("sGame");
-        const start = document.getElementByID("start");
-        function showGame() {
-            if (cards.style.visibility === 'hidden') {
-                cards.style.visibility = 'visible';
-            } else {
-                cards.style.visibility = 'hidden';
-            }
-            start.style.display = 'none';
-        }
-
-    </script>
-    <script>
+        const start = document.getElementById("start");
         const match = document.getElementById("game");
         const nameField = document.getElementById("nameField");
+        const restartButton = document.getElementById("restart")
+
+        const startState = "START";
+        const playState = "PLAY";
+        const endState = "END";
+
+        let gameState = startState;
+
+        let win = 0;
+        let lose = 0;
+
+        function showGame() {
+            gameState = playState;
+            cards.style.display = "block";
+            start.style.display = "none";
+            nameField.style.display = "none";
+            restartButton.style.display = "none";
+        }
+        
+        function tally(outcome) {
+            if (outcome == "Tie") {
+                return
+            }
+
+            if (outcome == "Win") {
+                win += 1;
+            } else {
+                lose += 1; 
+            }
+        }
+
+        function restart() {
+            start.style.display = "block";
+            nameField.style.display = "block";
+        }
+
+        function endGame() {
+            if (win == 2 || lose == 2) { 
+                cards.style.display = "none";
+                restartButton.style.display = "block";
+                match.innerHTML = "";
+                return true;
+            }
+
+            return false
+        }
 
         function userChoice(choice) {
             let bot = botChoice()
             let result = outcome(choice, bot)
+            tally(result);
+            if (endGame()) {
+                return
+            }
 
             match.innerHTML = ""
             let playText = document.createElement("h3")
@@ -131,6 +179,10 @@ rock = https://static.thenounproject.com/png/477914-200.png
             let finalOutcome = document.createElement("h2")
             finalOutcome.innerText = `${result}`
             match.appendChild(finalOutcome)
+
+            let scoreBoard = document.createElement("span")
+            scoreBoard.innerText = `Wins = ${win}     Lose = ${lose}`
+            match.appendChild(scoreBoard) 
         }
 
         function botChoice() {
