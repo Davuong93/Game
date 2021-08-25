@@ -81,7 +81,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
     <div id="sGame" class="center">
         <div>
             <input id="nameField" type="text" value="Bob" placeholder"Please enter your name"/>
-            <button onclick="startGame()">Enter Your Name!</button>
+            <button onclick="showGame()">Enter Your Name!</button>
         </div>
         <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
                 width="200" height="200" alt="An image of a Scissor" /> </button>
@@ -91,40 +91,14 @@ rock = https://static.thenounproject.com/png/477914-200.png
                 width="200" height="200" alt="An Image of a Rock" /> </button>
         <h1 id="game"></h1>
     </div>
-    
     <script>
-        const rpsGame = document.getElementById("sGame");
-        function startGame() {
-            scissor();
-            paper();
-            rock();
-        }
-
-        function scissor() {
-            const btn1 = document.createElement("button");
-            btn1.onclick = () => {userChoice('Scissor')};
-            const scissorImage = document.createElement("img");
-            scissorImage.src= "https://static.thenounproject.com/png/88666-200.png";
-            btn1.appendChild(scissorImage);
-            rpsGame.appendChild(btn1);
-        }
-
-        function paper() {
-            const btn2 = document.createElement("button");
-            btn2.onclick = () => {userChoice('Paper')};
-            const paperImage = document.createElement("img");
-            paperImage.src = "https://static.thenounproject.com/png/477912-200.png";
-            bt2.appendChild(paperImage);
-            rpsGame.appendChild(btn2);
-        }
-
-        function rock() {
-            const btn3 = document.createElement("button");
-            btn3.onclick = () => {userChoice('Rock')};
-            const rockImage = document.createElement("img");
-            rockImage.src = "https://static.thenounproject.com/png/477914-200.png";
-            btn3.appendChild(rockImage);
-            rpsGame.appendChild(btn3);
+        function showGame() {
+            const cards = document.getElementById("sGame");
+            if (cards.style.display === "none") {
+                cards.style.display = "block";
+            } else {
+                cards.style.display = "none";
+            }
         }
     </script>
     <script>
