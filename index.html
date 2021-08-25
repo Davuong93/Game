@@ -51,6 +51,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             border-width: medium;
             border-radius: 12px;
         }
+
         .middle {
             text-align: center;
         }
@@ -80,26 +81,27 @@ rock = https://static.thenounproject.com/png/477914-200.png
     <h1 class="title">Rock Paper Scissors!</h1>
     <div class="center">
         <div class="center">
-            <input id="nameField" type="text" value="Bob" placeholder"Please enter your name"/>
+            <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
             <button onclick="showGame()">Enter Your Name!</button>
         </div>
         <div id="sGame" class="center">
             <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
-                width="200" height="200" alt="An image of a Scissor" /> </button>
+                    width="200" height="200" alt="An image of a Scissor" /> </button>
             <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png"
-                width="200" height="200" alt="An image of a Paper" /> </button>
+                    width="200" height="200" alt="An image of a Paper" /> </button>
             <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
-                width="200" height="200" alt="An Image of a Rock" /> </button>
+                    width="200" height="200" alt="An Image of a Rock" /> </button>
         </div>
         <h1 id="game"></h1>
     </div>
     <script>
+        const cards = document.getElementById("sGame");
+        sGame.style.visibility = "hidden";
         function showGame() {
-            const cards = document.getElementById("sGame");
-            if (cards.style.display === "none") {
-                cards.style.display = "block";
+            if (cards.style.visibility === 'hidden') {
+                cards.style.visibility = 'visible';
             } else {
-                cards.style.display = "none";
+                cards.style.visibility = 'hidden';
             }
         }
     </script>
@@ -159,9 +161,9 @@ rock = https://static.thenounproject.com/png/477914-200.png
             }
         }
     </script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-     crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
