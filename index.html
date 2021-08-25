@@ -17,7 +17,7 @@ Things to build:
     
     USER picked X and BOT picked Y
         Someone WINS!
-Improve the UI, and make it feel more like a video game
+Improve the UI, and make it feel more like a video game 
 Use CSS to make it look more like a game on a website
 Have a welcome screen that prompt user for their name, with a START button
 When the start button is pressed, make a button in the center of the div and then have it create the HTML space
@@ -84,8 +84,11 @@ rock = https://static.thenounproject.com/png/477914-200.png
     <h1 class="middle">Rock Paper Scissors!</h1>
     <div class="center">
         <div class="middle">
+            <h2>Welcome to my little mini-game, please enter your name!</h2>
             <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
-            <button onclick="showGame()">Enter Your Name!</button>
+            <div>
+                <button onclick="showGame()">START!</button>
+            </div>
         </div>
         <div id="sGame" class="center2">
             <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
