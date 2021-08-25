@@ -96,9 +96,11 @@ rock = https://static.thenounproject.com/png/477914-200.png
         const rpsGame = document.getElementById("sGame");
         function startGame() {
             const btn1 = document.createElement("button");
-            btn.innerHTML = "Scissor";
+            btn1.innerText = "Scissor";
             btn1.onclick = () => {userChoice('Scissor')}
-            btn1.src = 'https://static.thenounproject.com/png/88666-200.png';
+            const scissorImage = document.createElement("img");
+            scissorImage.src= "https://static.thenounproject.com/png/88666-200.png";
+            btn1.appendChild(scissorImage)
         }
     </script>
     <script>
