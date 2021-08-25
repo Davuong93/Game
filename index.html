@@ -51,10 +51,12 @@ rock = https://static.thenounproject.com/png/477914-200.png
             border-width: medium;
             border-radius: 12px;
         }
+
         .center2 {
             margin: auto;
             width: 60%;
         }
+
         .middle {
             text-align: center;
         }
@@ -103,13 +105,14 @@ rock = https://static.thenounproject.com/png/477914-200.png
     <script>
         const cards = document.getElementById("sGame");
         const start = document.getElementByID("start");
-        cards.style.visibility = "hidden";
+        cards.style.visibility = 'hidden';
         function showGame() {
-            if (cards.style.visibility === 'hidden') {
-                cards.style.visibility = 'visible';
-            } else {
+            if (cards.style.visibility === 'visible') {
                 cards.style.visibility = 'hidden';
+            } else {
+                cards.style.visibility = 'visible';
             }
+            start.style.display = 'none';
         }
     </script>
     <script>
