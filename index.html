@@ -82,14 +82,14 @@ rock = https://static.thenounproject.com/png/477914-200.png
         </div>
     </nav>
     <h1 class="middle">Rock Paper Scissors!</h1>
-    <div class="middle">
-        <h2>Welcome to my little mini-game, please enter your name!</h2>
-        <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
-        <div>
-            <button onclick="showGame()">START!</button>
-        </div>
-    </div>
     <div class="center">
+        <div class="middle">
+            <h2>Welcome to my little mini-game, please enter your name!</h2>
+            <input id="nameField" type="text" value="Bob" placeholder"Please enter your name" />
+            <div id=start>
+                <button onclick="showGame()">START!</button>
+            </div>
+        </div>
         <div id="sGame" class="center2">
             <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
                     width="200" height="200" alt="An image of a Scissor" /> </button>
@@ -102,8 +102,10 @@ rock = https://static.thenounproject.com/png/477914-200.png
     </div>
     <script>
         const cards = document.getElementById("sGame");
+        const start = document.getElementByID("start");
         sGame.style.visibility = "hidden";
         function showGame() {
+            start.style.visibility = "hidden";
             if (cards.style.visibility === 'hidden') {
                 cards.style.visibility = 'visible';
             } else {
