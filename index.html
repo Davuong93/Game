@@ -154,10 +154,13 @@ rock = https://static.thenounproject.com/png/477914-200.png
         }
 
         function endGame() {
+            gameState = endState;
             if (win == 2 || lose == 2) { 
                 cards.style.display = "none";
                 restartButton.style.display = "block";
                 match.innerHTML = "";
+                let win = 0;
+                let lose = 0;
                 return true;
             }
 
