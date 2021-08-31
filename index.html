@@ -145,7 +145,6 @@ rock = https://static.thenounproject.com/png/477914-200.png
             if (outcome == "Tie") {
                 return
             }
-
             if (outcome == "Win") {
                 win += 1;
             } else {
@@ -157,19 +156,19 @@ rock = https://static.thenounproject.com/png/477914-200.png
             start.style.display = "block";
             nameField.style.display = "block";
             restartButton.style.display = "none";
+            match.innerHTML = "";
         }
 
         function endGame() {
             gameState = endState;
-            if (win == 2 || lose == 2) { 
+            if (win == 2 | lose == 2) { 
                 cards.style.display = "none";
                 restartButton.style.display = "block";
-                match.innerHTML = "";
+                match.innerText = "Thank you for playing!";
                 win = 0;
                 lose = 0;
                 return true;
-            }
-
+            } 
             return false
         }
 
