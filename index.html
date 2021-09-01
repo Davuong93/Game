@@ -43,7 +43,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             margin: auto;
             margin-top: 50px;
             width: 70%;
-            height: 500px;
+            height: 700px;
             border: 5px solid white;
             padding: 10px;
             --bs-bg-opacity: 0.10;
@@ -67,9 +67,13 @@ rock = https://static.thenounproject.com/png/477914-200.png
             display: none;
             margin: auto;
         }
-        
+
         .nameEntry {
             margin: auto;
+        }
+
+        .botcards {
+            margin-left: 25px;
         }
     </style>
 </head>
@@ -112,9 +116,19 @@ rock = https://static.thenounproject.com/png/477914-200.png
                 <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
                         width="200" height="200" alt="An Image of a Rock" /> </button>
             </div>
+            <h1 id="game" class="middle"></h1>
+
+            <div>
+                <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200"
+                     alt="An Image of a Rock" />
+                <img src="https://static.thenounproject.com/png/477912-200.png" width="200" height="200"
+                    class="botcards"  alt="An image of a Paper" />
+                <img src="https://static.thenounproject.com/png/88666-200.png" width="200" height="200" class="botcards"
+                     alt="An image of a Scissor" />
+            </div>
         </div>
-        <h1 id="game" class="middle"></h1>
         <button id="restart" class="restartHide" onclick="restart()">Restart</button>
+
 
     </div>
     <script>
@@ -140,7 +154,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             nameField.style.display = "none";
             restartButton.style.display = "none";
         }
-        
+
         function tally(outcome) {
             if (outcome == "Tie") {
                 return
@@ -148,7 +162,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             if (outcome == "Win") {
                 win += 1;
             } else {
-                lose += 1; 
+                lose += 1;
             }
         }
 
@@ -161,14 +175,14 @@ rock = https://static.thenounproject.com/png/477914-200.png
 
         function endGame() {
             gameState = endState;
-            if (win == 2 | lose == 2) { 
+            if (win == 2 | lose == 2) {
                 cards.style.display = "none";
                 restartButton.style.display = "block";
                 match.innerText = "Thank you for playing!";
                 win = 0;
                 lose = 0;
                 return true;
-            } 
+            }
             return false
         }
 
@@ -185,12 +199,12 @@ rock = https://static.thenounproject.com/png/477914-200.png
             playText.innerText = `${nameField.value} picked ${choice} and Bot picked ${bot}`
             match.appendChild(playText)
             let finalOutcome = document.createElement("h2")
-            finalOutcome.innerText = `${result}`
+            finalOutcome.innerText = `You ${result}`
             match.appendChild(finalOutcome)
 
             let scoreBoard = document.createElement("span")
             scoreBoard.innerText = `Wins = ${win}     Lose = ${lose}`
-            match.appendChild(scoreBoard) 
+            match.appendChild(scoreBoard)
         }
 
         function botChoice() {
