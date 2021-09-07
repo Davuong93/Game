@@ -51,6 +51,8 @@ rock = https://static.thenounproject.com/png/477914-200.png
             border-style: solid;
             border-width: medium;
             border-radius: 12px;
+            background-color: white;
+            opacity: 50%;
         }
 
         .center2 {
@@ -111,6 +113,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             </div>
         </div>
         <div id="sGame" class="center2">
+            <h1 id="game" class="middle"></h1>
             <div>
                 <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
                         width="200" height="200" alt="An image of a Scissor" /> </button>
@@ -119,8 +122,6 @@ rock = https://static.thenounproject.com/png/477914-200.png
                 <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
                         width="200" height="200" alt="An Image of a Rock" /> </button>
             </div>
-            <h1 id="game" class="middle"></h1>
-
             <div>
                 <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200"
                      alt="An Image of a Rock" />
@@ -130,6 +131,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
                      alt="An image of a Scissor" />
             </div>
         </div>
+        <h2 id="score" class="middle"></h2>
         <button id="restart" class="restartHide" onclick="restart()">Restart</button>
 
 
@@ -138,8 +140,9 @@ rock = https://static.thenounproject.com/png/477914-200.png
         const cards = document.getElementById("sGame");
         const start = document.getElementById("start");
         const match = document.getElementById("game");
+        const progress = document.getElementById("score");
         const nameField = document.getElementById("nameField");
-        const restartButton = document.getElementById("restart")
+        const restartButton = document.getElementById("restart");
 
         const startState = "START";
         const playState = "PLAY";
@@ -204,10 +207,11 @@ rock = https://static.thenounproject.com/png/477914-200.png
             let finalOutcome = document.createElement("h2")
             finalOutcome.innerText = `You ${result}`
             match.appendChild(finalOutcome)
-
+            
+            progress.innerHTML = ""
             let scoreBoard = document.createElement("span")
             scoreBoard.innerText = `Wins = ${win}     Lose = ${lose}`
-            match.appendChild(scoreBoard)
+            progress.appendChild(scoreBoard)
         }
 
         function botChoice() {
