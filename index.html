@@ -43,7 +43,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             margin: auto;
             margin-top: 50px;
             width: 60%;
-            height: 800px;
+            height: 200px;
             border: 5px;
             padding: 10px;
             --bs-bg-opacity: 0.10;
@@ -64,7 +64,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
         .middle {
             text-align: center;
         }
-        
+
         .title {
             text-align: center;
             color: white
@@ -82,14 +82,23 @@ rock = https://static.thenounproject.com/png/477914-200.png
         .botcards {
             margin-left: 25px;
         }
+
         .body {
             background-image: url("https://wallpaperaccess.com/full/3295969.jpg");
         }
+
         .action {
             width: 60%;
             height: 210px;
             border: 10px;
+            border-style: solid;
+            border-width: medium;
+            margin: auto;
+        }
 
+        .card {
+            width: 200px;
+            height: 200px;
         }
     </style>
 </head>
@@ -125,6 +134,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
         </div>
         <div id="sGame" class="center2">
             <h1 id="game" class="middle"></h1>
+            <h2 id="score" class="middle"></h2>
             <div>
                 <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
                         width="200" height="200" alt="An image of a Scissor" /> </button>
@@ -135,21 +145,21 @@ rock = https://static.thenounproject.com/png/477914-200.png
             </div>
 
             <div class="action">
-                <span></span>
+                <div></div>
                 <h1>VS</h1>
-                <span></span>
+                <div></div>
             </div>
 
             <div>
                 <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200"
-                     alt="An Image of a Rock" />
+                    alt="An Image of a Rock" />
                 <img src="https://static.thenounproject.com/png/477912-200.png" width="200" height="200"
-                    class="botcards"  alt="An image of a Paper" />
+                    class="botcards" alt="An image of a Paper" />
                 <img src="https://static.thenounproject.com/png/88666-200.png" width="200" height="200" class="botcards"
-                     alt="An image of a Scissor" />
+                    alt="An image of a Scissor" />
             </div>
         </div>
-        <h2 id="score" class="middle"></h2>
+
         <button id="restart" class="restartHide" onclick="restart()">Restart</button>
 
 
@@ -177,6 +187,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             start.style.display = "none";
             nameField.style.display = "none";
             restartButton.style.display = "none";
+            cards.style.height = "810px";
         }
 
         function tally(outcome) {
@@ -218,7 +229,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             if (endGame()) {
                 return
             }
-            
+
             progress.style.display = "block";
 
             match.innerHTML = ""
@@ -228,7 +239,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             let finalOutcome = document.createElement("h2")
             finalOutcome.innerText = `You ${result}`
             match.appendChild(finalOutcome)
-            
+
             progress.innerHTML = ""
             let scoreBoard = document.createElement("span")
             scoreBoard.innerText = `Wins = ${win}     Lose = ${lose}`
