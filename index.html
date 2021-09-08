@@ -43,7 +43,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             margin: auto;
             margin-top: 50px;
             width: 60%;
-            height: 200px;
+            height: 810px;
             border: 5px;
             padding: 10px;
             --bs-bg-opacity: 0.10;
@@ -87,19 +87,6 @@ rock = https://static.thenounproject.com/png/477914-200.png
             background-image: url("https://wallpaperaccess.com/full/3295969.jpg");
         }
 
-        .action {
-            width: 60%;
-            height: 210px;
-            border: 10px;
-            border-style: solid;
-            border-width: medium;
-            margin: auto;
-        }
-
-        .card {
-            width: 200px;
-            height: 200px;
-        }
     </style>
 </head>
 
@@ -135,7 +122,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
         <div id="sGame" class="center2">
             <h1 id="game" class="middle"></h1>
             <h2 id="score" class="middle"></h2>
-            <div>
+            <div id="pChoices">
                 <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
                         width="200" height="200" alt="An image of a Scissor" /> </button>
                 <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png"
@@ -143,14 +130,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
                 <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
                         width="200" height="200" alt="An Image of a Rock" /> </button>
             </div>
-
-            <div class="action">
-                <div></div>
-                <h1>VS</h1>
-                <div></div>
-            </div>
-
-            <div>
+            <div id="bChoices">
                 <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200"
                     alt="An Image of a Rock" />
                 <img src="https://static.thenounproject.com/png/477912-200.png" width="200" height="200"
@@ -159,7 +139,6 @@ rock = https://static.thenounproject.com/png/477914-200.png
                     alt="An image of a Scissor" />
             </div>
         </div>
-
         <button id="restart" class="restartHide" onclick="restart()">Restart</button>
 
 
@@ -171,6 +150,8 @@ rock = https://static.thenounproject.com/png/477914-200.png
         const progress = document.getElementById("score");
         const nameField = document.getElementById("nameField");
         const restartButton = document.getElementById("restart");
+        const pCards = document.getElementById("pChoices");
+        const bCards = document.getElementById("bChoices");
 
         const startState = "START";
         const playState = "PLAY";
@@ -184,10 +165,11 @@ rock = https://static.thenounproject.com/png/477914-200.png
         function showGame() {
             gameState = playState;
             cards.style.display = "block";
+            pCards.style.display = "block";
+            bCards.style.display = "block";
             start.style.display = "none";
             nameField.style.display = "none";
-            restartButton.style.display = "none";
-            cards.style.height = "810px";
+            progress.style.display = "none";
         }
 
         function tally(outcome) {
@@ -211,10 +193,10 @@ rock = https://static.thenounproject.com/png/477914-200.png
         function endGame() {
             gameState = endState;
             if (win == 2 | lose == 2) {
-                cards.style.display = "none";
+                match.innerText = "Thank you for playing! Please press restart to play again!";
+                pCards.style.display = "none";
+                bCards.style.display = "none";
                 restartButton.style.display = "block";
-                match.innerText = "Thank you for playing!";
-                progress.style.display = "block";
                 win = 0;
                 lose = 0;
                 return true;
@@ -225,7 +207,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
         function userChoice(choice) {
             let bot = botChoice()
             let result = outcome(choice, bot)
-            tally(result);
+            tally(result)
             if (endGame()) {
                 return
             }
