@@ -185,6 +185,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
                 cards.style.display = "none";
                 restartButton.style.display = "block";
                 match.innerText = "Thank you for playing!";
+                progress.style.display = "none";
                 win = 0;
                 lose = 0;
                 return true;
@@ -199,7 +200,9 @@ rock = https://static.thenounproject.com/png/477914-200.png
             if (endGame()) {
                 return
             }
-
+            
+            progress.style.display = "block";
+            
             match.innerHTML = ""
             let playText = document.createElement("h3")
             playText.innerText = `${nameField.value} picked ${choice} and Bot picked ${bot}`
