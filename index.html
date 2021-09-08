@@ -44,7 +44,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             margin-top: 50px;
             width: 60%;
             height: 700px;
-            border: 5px solid white;
+            border: 5px;
             padding: 10px;
             --bs-bg-opacity: 0.10;
             border: 5px;
@@ -64,6 +64,11 @@ rock = https://static.thenounproject.com/png/477914-200.png
         .middle {
             text-align: center;
         }
+        
+        .title {
+            text-align: center;
+            color: white
+        }
 
         .restartHide {
             display: none;
@@ -79,6 +84,12 @@ rock = https://static.thenounproject.com/png/477914-200.png
         }
         .body {
             background-image: url("https://wallpaperaccess.com/full/3295969.jpg");
+        }
+        .action {
+            width: 60%;
+            height: 210px;
+            border: 10px;
+
         }
     </style>
 </head>
@@ -103,7 +114,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             </div>
         </div>
     </nav>
-    <h1 class="middle">Rock Paper Scissors!</h1>
+    <h1 class="title">Rock Paper Scissors!</h1>
     <div class="center">
         <div class="middle">
             <h2>Welcome to my little mini-game, please enter your name!</h2>
@@ -121,6 +132,9 @@ rock = https://static.thenounproject.com/png/477914-200.png
                         width="200" height="200" alt="An image of a Paper" /> </button>
                 <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
                         width="200" height="200" alt="An Image of a Rock" /> </button>
+            </div>
+            <div>
+
             </div>
             <div>
                 <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200"
@@ -202,7 +216,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             }
             
             progress.style.display = "block";
-            
+
             match.innerHTML = ""
             let playText = document.createElement("h3")
             playText.innerText = `${nameField.value} picked ${choice} and Bot picked ${bot}`
