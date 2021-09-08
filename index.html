@@ -43,7 +43,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             margin: auto;
             margin-top: 50px;
             width: 60%;
-            height: 810px;
+            height: 200px;
             border: 5px;
             padding: 10px;
             --bs-bg-opacity: 0.10;
@@ -111,7 +111,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
         </div>
     </nav>
     <h1 class="title">Rock Paper Scissors!</h1>
-    <div class="center">
+    <div id="board" class="center">
         <div class="middle">
             <h2>Welcome to my little mini-game, please enter your name!</h2>
             <input id="nameField" class="nameEntry" type="text" value="Bob" placeholder="Please enter your name" />
@@ -121,7 +121,6 @@ rock = https://static.thenounproject.com/png/477914-200.png
         </div>
         <div id="sGame" class="center2">
             <h1 id="game" class="middle"></h1>
-            <h2 id="score" class="middle"></h2>
             <div id="pChoices">
                 <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
                         width="200" height="200" alt="An image of a Scissor" /> </button>
@@ -130,6 +129,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
                 <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
                         width="200" height="200" alt="An Image of a Rock" /> </button>
             </div>
+            <h2 id="score" class="middle"></h2>
             <div id="bChoices">
                 <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200"
                     alt="An Image of a Rock" />
@@ -152,6 +152,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
         const restartButton = document.getElementById("restart");
         const pCards = document.getElementById("pChoices");
         const bCards = document.getElementById("bChoices");
+        const gBoard = document.getElementById("board");
 
         const startState = "START";
         const playState = "PLAY";
@@ -170,6 +171,8 @@ rock = https://static.thenounproject.com/png/477914-200.png
             start.style.display = "none";
             nameField.style.display = "none";
             progress.style.display = "none";
+            gBoard.style.height = "710px";
+            match.innerText = "Pick a card! Lets see if you will win!";
         }
 
         function tally(outcome) {
