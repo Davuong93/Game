@@ -43,7 +43,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
             margin: auto;
             margin-top: 50px;
             width: 60%;
-            height: 700px;
+            height: 800px;
             border: 5px;
             padding: 10px;
             --bs-bg-opacity: 0.10;
@@ -133,9 +133,13 @@ rock = https://static.thenounproject.com/png/477914-200.png
                 <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
                         width="200" height="200" alt="An Image of a Rock" /> </button>
             </div>
-            <div>
 
+            <div class="action">
+                <span></span>
+                <h1>VS</h1>
+                <span></span>
             </div>
+
             <div>
                 <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200"
                      alt="An Image of a Rock" />
@@ -198,8 +202,8 @@ rock = https://static.thenounproject.com/png/477914-200.png
             if (win == 2 | lose == 2) {
                 cards.style.display = "none";
                 restartButton.style.display = "block";
-                match.innerHTML = "Thank you for playing!";
-                progress.style.display = "none";
+                match.innerText = "Thank you for playing!";
+                progress.style.display = "block";
                 win = 0;
                 lose = 0;
                 return true;
