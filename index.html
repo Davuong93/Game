@@ -122,7 +122,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
         <div id="sGame" class="center2">
             <h1 id="game" class="middle"></h1>
             <div id="pChoices">
-                <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
+                <button onclick="userChoice('Scissors')"> <img src="https://static.thenounproject.com/png/88666-200.png"
                         width="200" height="200" alt="An image of a Scissor" /> </button>
                 <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png"
                         width="200" height="200" alt="An image of a Paper" /> </button>
@@ -144,6 +144,20 @@ rock = https://static.thenounproject.com/png/477914-200.png
 
     </div>
     <script>
+        // Constants
+        const kRock = "Rock";
+        const kScissors = "Scissors";
+        const kPaper = "Paper";
+
+        const kStartState = "Start";
+        const kPlayState = "Play";
+        const kEndState = "End";
+
+        const kWin = "Win";
+        const kLose = "Lose";
+        const kTie = "Tie";
+
+        // Elements
         const cards = document.getElementById("sGame");
         const start = document.getElementById("start");
         const match = document.getElementById("game");
@@ -154,14 +168,10 @@ rock = https://static.thenounproject.com/png/477914-200.png
         const bCards = document.getElementById("bChoices");
         const gBoard = document.getElementById("board");
 
-        const startState = "START";
-        const playState = "PLAY";
-        const endState = "END";
-
-        let gameState = startState;
-
-        let win = 0;
-        let lose = 0;
+        // Game state
+        let gameState = kStartState;
+        let winCount = 0;
+        let loseCount = 0;
 
         function showGame() {
             gameState = playState;
@@ -175,14 +185,12 @@ rock = https://static.thenounproject.com/png/477914-200.png
             match.innerText = "Pick a card! Lets see if you will win!";
         }
 
+        // Updates the score for the game
         function tally(outcome) {
-            if (outcome == "Tie") {
-                return
-            }
-            if (outcome == "Win") {
-                win += 1;
-            } else {
-                lose += 1;
+            if (outcome == kWin) {
+                winCount += 1;
+            } else if (outcome == kLose) {
+                loseCount += 1;
             }
         }
 
@@ -195,7 +203,7 @@ rock = https://static.thenounproject.com/png/477914-200.png
 
         function endGame() {
             gameState = endState;
-            if (win == 2 | lose == 2) {
+            if (win == 2 || lose == 2) {
                 match.innerText = "Thank you for playing! Please press restart to play again!";
                 pCards.style.display = "none";
                 bCards.style.display = "none";
@@ -235,41 +243,42 @@ rock = https://static.thenounproject.com/png/477914-200.png
         function botChoice() {
             let dice = Math.random();
             if (dice <= 0.33) {
-                return "Rock";
+                return kRock;
             } else if (dice <= 0.66) {
-                return "Paper"
+                return kPaper;
             } else {
-                return "Scissor"
+                return kScissors;
             }
         }
 
         function outcome(user, bot) {
-            if (user == "Scissor") {
-                if (bot == "Scissor") {
+            if (user == kScissors) {
+                if (bot == kScissors) {
                     return "Tie"
-                } else if (bot == "Paper") {
+                } else if (bot == kPaper) {
                     return "Win"
                 } else {
                     return "Lose"
                 }
-            } else if (user == "Paper") {
-                if (bot == "Scissor") {
+            } else if (user == kPaper) {
+                if (bot == kScissors) {
                     return "Lose"
-                } else if (bot == "Paper") {
+                } else if (bot == kPaper) {
                     return "Tie"
                 } else {
                     return "Win"
                 }
             } else {
-                if (bot == "Scissor") {
+                if (bot == kScissors) {
                     return "Win"
-                } else if (bot == "Paper") {
+                } else if (bot == kPaper) {
                     return "Lose"
                 } else {
                     return "Tie"
                 }
             }
         }
+        
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
