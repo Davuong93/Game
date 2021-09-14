@@ -1,5 +1,5 @@
 <html>
-<!--
+  <!--
 Things to build:
 1. User can input their name, if no name is set call the user Bob
     Enter your name [ BUTTON ]
@@ -33,247 +33,337 @@ papers = https://static.thenounproject.com/png/477912-200.png
 rock = https://static.thenounproject.com/png/477914-200.png
 -->
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
     <style>
-        .center {
-            margin: auto;
-            margin-top: 50px;
-            width: 60%;
-            height: 200px;
-            border: 5px;
-            padding: 10px;
-            --bs-bg-opacity: 0.10;
-            border: 5px;
-            border-style: solid;
-            border-width: medium;
-            border-radius: 12px;
-            background-color: white;
-            opacity: 50%;
-        }
+      .center {
+        margin: auto;
+        margin-top: 50px;
+        width: 60%;
+        height: 200px;
+        border: 5px;
+        padding: 10px;
+        --bs-bg-opacity: 0.1;
+        border: 5px;
+        border-style: solid;
+        border-width: medium;
+        border-radius: 12px;
+        background-color: white;
+        opacity: 50%;
+      }
 
-        .center2 {
-            margin: auto;
-            width: 60%;
-            display: none;
-        }
+      .center2 {
+        margin: auto;
+        width: 60%;
+        display: none;
+      }
 
-        .middle {
-            text-align: center;
-        }
+      .middle {
+        text-align: center;
+      }
 
-        .title {
-            text-align: center;
-            color: white
-        }
+      .title {
+        text-align: center;
+        color: white;
+      }
 
-        .restartHide {
-            display: none;
-            margin: auto;
-        }
+      .restartHide {
+        display: none;
+        margin: auto;
+      }
 
-        .nameEntry {
-            margin: auto;
-        }
+      .nameEntry {
+        margin: auto;
+      }
 
-        .botcards {
-            margin-left: 25px;
-        }
+      .botcards {
+        margin-left: 25px;
+      }
 
-        .body {
-            background-image: url("https://wallpaperaccess.com/full/3295969.jpg");
-        }
-
+      .body {
+        background-image: url("https://wallpaperaccess.com/full/3295969.jpg");
+      }
     </style>
-</head>
+  </head>
 
-<body class="body">
+  <body class="body">
     <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand">David Vuong</a>
-            <div class="d-flex">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">About Me</a>
-                    </li>
-                    <!-- will add more buttons here with more experience-->
-                    <!--<li class="nav-item"> 
+      <div class="container-fluid">
+        <a class="navbar-brand">David Vuong</a>
+        <div class="d-flex">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >About Me</a
+              >
+            </li>
+            <!-- will add more buttons here with more experience-->
+            <!--<li class="nav-item"> 
                             <a class="nav-link" href="#"></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Pricing</a>
                         </li> -->
-                </ul>
-            </div>
+          </ul>
         </div>
+      </div>
     </nav>
     <h1 class="title">Rock Paper Scissors!</h1>
     <div id="board" class="center">
-        <div class="middle">
-            <h2>Welcome to my little mini-game, please enter your name!</h2>
-            <input id="nameField" class="nameEntry" type="text" value="Bob" placeholder="Please enter your name" />
-            <div id=start>
-                <button onclick="showGame()">START!</button>
-            </div>
+      <div id="start" class="middle">
+        <h2>Welcome to my little mini-game, please enter your name!</h2>
+        <input
+          id="nameField"
+          class="nameEntry"
+          type="text"
+          value="Bob"
+          placeholder="Please enter your name"
+        />
+        <button onclick="startGame()">START!</button>
+      </div>
+      <div id="gameText" class="middle">
+        <h1 id="game"></h1>
+        <h1 id="commentaryText"></h1>
+        <h2 id="score"></h2>
+      </div>
+      <div id="sGame" class="center2">
+        <div id="pChoices">
+          <button onclick="userChoice('Scissors')">
+            <img
+              src="https://static.thenounproject.com/png/88666-200.png"
+              width="200"
+              height="200"
+              alt="An image of a Scissor"
+            />
+          </button>
+          <button onclick="userChoice('Paper')">
+            <img
+              src="https://static.thenounproject.com/png/477912-200.png"
+              width="200"
+              height="200"
+              alt="An image of a Paper"
+            />
+          </button>
+          <button onclick="userChoice('Rock')">
+            <img
+              src="https://static.thenounproject.com/png/477914-200.png"
+              width="200"
+              height="200"
+              alt="An Image of a Rock"
+            />
+          </button>
         </div>
-        <div id="sGame" class="center2">
-            <h1 id="game" class="middle"></h1>
-            <div id="pChoices">
-                <button onclick="userChoice('Scissor')"> <img src="https://static.thenounproject.com/png/88666-200.png"
-                        width="200" height="200" alt="An image of a Scissor" /> </button>
-                <button onclick="userChoice('Paper')"> <img src="https://static.thenounproject.com/png/477912-200.png"
-                        width="200" height="200" alt="An image of a Paper" /> </button>
-                <button onclick="userChoice('Rock')"> <img src="https://static.thenounproject.com/png/477914-200.png"
-                        width="200" height="200" alt="An Image of a Rock" /> </button>
-            </div>
-            <h2 id="score" class="middle"></h2>
-            <div id="bChoices">
-                <img src="https://static.thenounproject.com/png/477914-200.png" width="200" height="200"
-                    alt="An Image of a Rock" />
-                <img src="https://static.thenounproject.com/png/477912-200.png" width="200" height="200"
-                    class="botcards" alt="An image of a Paper" />
-                <img src="https://static.thenounproject.com/png/88666-200.png" width="200" height="200" class="botcards"
-                    alt="An image of a Scissor" />
-            </div>
+        <div id="bChoices">
+          <img
+            src="https://static.thenounproject.com/png/477914-200.png"
+            width="200"
+            height="200"
+            alt="An Image of a Rock"
+          />
+          <img
+            src="https://static.thenounproject.com/png/477912-200.png"
+            width="200"
+            height="200"
+            class="botcards"
+            alt="An image of a Paper"
+          />
+          <img
+            src="https://static.thenounproject.com/png/88666-200.png"
+            width="200"
+            height="200"
+            class="botcards"
+            alt="An image of a Scissor"
+          />
         </div>
-        <button id="restart" class="restartHide" onclick="restart()">Restart</button>
-
-
+      </div>
+      <button id="restart" class="restartHide" onclick="restartGame()">
+        Restart
+      </button>
     </div>
     <script>
-        const cards = document.getElementById("sGame");
-        const start = document.getElementById("start");
-        const match = document.getElementById("game");
-        const progress = document.getElementById("score");
-        const nameField = document.getElementById("nameField");
-        const restartButton = document.getElementById("restart");
-        const pCards = document.getElementById("pChoices");
-        const bCards = document.getElementById("bChoices");
-        const gBoard = document.getElementById("board");
+      // Constants
+      const kRock = "Rock";
+      const kScissors = "Scissors";
+      const kPaper = "Paper";
 
-        const startState = "START";
-        const playState = "PLAY";
-        const endState = "END";
+      const kStartState = "Start";
+      const kPlayState = "Play";
+      const kEndState = "End";
 
-        let gameState = startState;
+      const kWin = "Win";
+      const kLose = "Lose";
+      const kTie = "Tie";
 
-        let win = 0;
-        let lose = 0;
+      // Elements
+      const cards = document.getElementById("sGame");
+      const startElement = document.getElementById("start");
+      const match = document.getElementById("game");
+      const progress = document.getElementById("score");
+      const nameField = document.getElementById("nameField");
+      const restartButton = document.getElementById("restart");
+      const gBoard = document.getElementById("board");
+      const gameTextElement = document.getElementById("gameText");
+      const commentaryTextElement = document.getElementById("commentaryText");
 
-        function showGame() {
-            gameState = playState;
-            cards.style.display = "block";
-            pCards.style.display = "block";
-            bCards.style.display = "block";
-            start.style.display = "none";
-            nameField.style.display = "none";
-            progress.style.display = "none";
-            gBoard.style.height = "710px";
-            match.innerText = "Pick a card! Lets see if you will win!";
+      // Game state
+      let gameState = kStartState;
+      let winCount = 0;
+      let loseCount = 0;
+
+      function startGame() {
+        updateGameState(kPlayState);
+      }
+
+      function restartGame() {
+        updateGameState(kStartState);
+      }
+
+      // Updates the current state of the game
+      function updateGameState(state) {
+        gameState = state;
+        render();
+      }
+
+      // Renders the game
+      function render() {
+        switch (gameState) {
+          case kStartState:
+            renderStart();
+            break;
+          case kPlayState:
+            renderPlay();
+            break;
+          case kEndState:
+            renderEndGame();
+            break;
         }
+      }
 
-        function tally(outcome) {
-            if (outcome == "Tie") {
-                return
-            }
-            if (outcome == "Win") {
-                win += 1;
-            } else {
-                lose += 1;
-            }
+      // Updates the score for the game
+      function tally(outcome) {
+        if (outcome == kWin) {
+          winCount += 1;
+        } else if (outcome == kLose) {
+          loseCount += 1;
         }
+      }
 
-        function restart() {
-            start.style.display = "block";
-            nameField.style.display = "block";
-            restartButton.style.display = "none";
-            match.innerHTML = "";
+      // Renders the start state
+      function renderStart() {
+        startElement.style.display = "block";
+        nameField.style.display = "block";
+        restartButton.style.display = "none";
+        gameTextElement.style.display = "none";
+      }
+
+      // Renders the play state
+      function renderPlay() {
+        cards.style.display = "block";
+        startElement.style.display = "none";
+        nameField.style.display = "none";
+        progress.style.display = "none";
+        gBoard.style.height = "710px";
+        gameTextElement.style.display = "block";
+        match.innerText = "Pick a card! Lets see if you will win!";
+      }
+
+      // Renders the end state
+      function renderEndGame() {
+        match.innerText =
+          "Thank you for playing! Please press restart to play again!";
+        cards.style.display = "none";
+        gameTextElement.style.display = "block";
+        restartButton.style.display = "block";
+        gBoard.style.height = "300px";
+        winCount = 0;
+        loseCount = 0;
+      }
+
+      // Determines whether the game should end
+      function shouldEndGame() {
+        return winCount == 2 || loseCount == 2;
+      }
+
+      // Get the user's choice selection and update the game
+      function userChoice(choice) {
+        let bot = botChoice();
+        let result = outcome(choice, bot);
+        tally(result);
+
+        progress.style.display = "block";
+
+        commentaryTextElement.innerHTML = "";
+        let playText = document.createElement("h3");
+        playText.innerText = `${nameField.value} picked ${choice} and Bot picked ${bot}`;
+        commentaryTextElement.appendChild(playText);
+        let finalOutcome = document.createElement("h2");
+        finalOutcome.innerText = `You ${result}`;
+        commentaryTextElement.appendChild(finalOutcome);
+
+        progress.innerHTML = "";
+        let scoreBoard = document.createElement("span");
+        scoreBoard.innerText = `Wins = ${winCount}     Lose = ${loseCount}`;
+        progress.appendChild(scoreBoard);
+
+        // check if game should end
+        if (shouldEndGame()) {
+          updateGameState(kEndState);
+          return;
         }
+      }
 
-        function endGame() {
-            gameState = endState;
-            if (win == 2 | lose == 2) {
-                match.innerText = "Thank you for playing! Please press restart to play again!";
-                pCards.style.display = "none";
-                bCards.style.display = "none";
-                restartButton.style.display = "block";
-                gBoard.style.height = "300px";
-                win = 0;
-                lose = 0;
-                return true;
-            }
-            return false
+      // Randomly selects an option for the bot
+      function botChoice() {
+        let dice = Math.random();
+        if (dice <= 0.33) {
+          return kRock;
+        } else if (dice <= 0.66) {
+          return kPaper;
+        } else {
+          return kScissors;
         }
+      }
 
-        function userChoice(choice) {
-            let bot = botChoice()
-            let result = outcome(choice, bot)
-            tally(result)
-            if (endGame()) {
-                return
-            }
-
-            progress.style.display = "block";
-
-            match.innerHTML = ""
-            let playText = document.createElement("h3")
-            playText.innerText = `${nameField.value} picked ${choice} and Bot picked ${bot}`
-            match.appendChild(playText)
-            let finalOutcome = document.createElement("h2")
-            finalOutcome.innerText = `You ${result}`
-            match.appendChild(finalOutcome)
-
-            progress.innerHTML = ""
-            let scoreBoard = document.createElement("span")
-            scoreBoard.innerText = `Wins = ${win}     Lose = ${lose}`
-            progress.appendChild(scoreBoard)
+      // Returns the result for what the user and bot picked
+      function outcome(user, bot) {
+        if (user == kScissors) {
+          if (bot == kScissors) {
+            return kTie;
+          } else if (bot == kPaper) {
+            return kWin;
+          } else {
+            return kLose;
+          }
+        } else if (user == kPaper) {
+          if (bot == kScissors) {
+            return kLose;
+          } else if (bot == kPaper) {
+            return kTie;
+          } else {
+            return kWin;
+          }
+        } else {
+          if (bot == kScissors) {
+            return kWin;
+          } else if (bot == kPaper) {
+            return kLose;
+          } else {
+            return kTie;
+          }
         }
-
-        function botChoice() {
-            let dice = Math.random();
-            if (dice <= 0.33) {
-                return "Rock";
-            } else if (dice <= 0.66) {
-                return "Paper"
-            } else {
-                return "Scissor"
-            }
-        }
-
-        function outcome(user, bot) {
-            if (user == "Scissor") {
-                if (bot == "Scissor") {
-                    return "Tie"
-                } else if (bot == "Paper") {
-                    return "Win"
-                } else {
-                    return "Lose"
-                }
-            } else if (user == "Paper") {
-                if (bot == "Scissor") {
-                    return "Lose"
-                } else if (bot == "Paper") {
-                    return "Tie"
-                } else {
-                    return "Win"
-                }
-            } else {
-                if (bot == "Scissor") {
-                    return "Win"
-                } else if (bot == "Paper") {
-                    return "Lose"
-                } else {
-                    return "Tie"
-                }
-            }
-        }
+      }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
